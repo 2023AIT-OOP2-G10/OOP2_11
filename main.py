@@ -55,7 +55,5 @@ def processed_images():
     processed_files = os.listdir(app.config['PROCESSED_FOLDER'])
     return render_template('processed.html', processed_files=processed_files)
 
-print("a")
-
 if __name__ == '__main__':
     app.run(debug=True)
