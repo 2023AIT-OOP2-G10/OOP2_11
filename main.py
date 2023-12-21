@@ -4,7 +4,6 @@ from werkzeug.utils import secure_filename
 from multiprocessing import Process
 import time
 import cv2
-from facedetect import process_image
 
 app = Flask(__name__)
 
