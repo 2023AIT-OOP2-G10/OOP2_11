@@ -17,7 +17,4 @@ def detect_faces(image_path, output_path):
 
     cv2.imwrite(output_path, image)
 
-# 既存のprocess_image関数を変更
-def process_image(file_path):
-    processed_path = os.path.join(app.config['PROCESSED_FOLDER'], os.path.basename(file_path))
-    detect_faces(file_path, processed_path)
+
