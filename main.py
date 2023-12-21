@@ -36,6 +36,7 @@ def process_image(file_path):
 # ファイルアップロード用のエンドポイント
 
 
+# ファイルアップロード用のエンドポイント
 @app.route('/', methods=['GET', 'POST'])
 def upload_file():
     if request.method == 'POST':
@@ -53,17 +54,16 @@ def upload_file():
             process = Process(target=process_image, args=(file_path,))
             process.start()
 
+           
             return redirect(url_for('upload_file'))
     return render_template('upload.html')
 
 # 処理された画像一覧のエンドポイント
-
-
 @app.route('/processed')
 def processed_images():
     processed_files = os.listdir(app.config['PROCESSED_FOLDER'])
     return render_template('processed.html', processed_files=processed_files)
 
-
 if __name__ == '__main__':
     app.run(debug=True)
+
