@@ -1,0 +1,8 @@
+<!doctype html>
+<title>Processed Images</title>
+<h1>Processed Images</h1>
+<ul>
+  {% for file in processed_files %}
+    <li><a href="{{ url_for('static', filename='processed/' + file) }}" target="_blank">{{ file }}</a></li>
+  {% endfor %}
+</ul>
