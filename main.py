@@ -5,6 +5,8 @@ from multiprocessing import Process
 import time
 import cv2
 
+from OOP2_11.facedetect import detect_faces
+
 app = Flask(__name__)
 
 # アップロードされた画像を保存するディレクトリ
@@ -15,18 +17,26 @@ ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['PROCESSED_FOLDER'] = PROCESSED_FOLDER
 
+
+
 # 許可されたファイルの拡張子をチェックする関数
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 # ファイルをアップロードして処理を行う関数
 def process_image(file_path):
+    base_filename = os.path.basename(file_path)
+    unique_suffix = str(int(time.time()))
     # 画像処理のサンプル（ここでは単純にグレースケール化）
     image = cv2.imread(file_path)
     gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     
     processed_path = os.path.join(app.config['PROCESSED_FOLDER'], os.path.basename(file_path))
     cv2.imwrite(processed_path, gray_image)
+
+    face_detected_image_path = os.path.join(app.config['PROCESSED_FOLDER'],
+                                            "face_" + unique_suffix + "_" + base_filename)
+    detect_faces(file_path, face_detected_image_path)
 
 # ファイルアップロード用のエンドポイント
 @app.route('/', methods=['GET', 'POST'])

@@ -2,7 +2,7 @@ import cv2
 import os
 
 # Haar Cascadeファイルのパス
-CASCADE_PATH = "OOP2_11/haarcascade_frontalface/haarcascade_frontalface.xml"
+CASCADE_PATH = "haarcascade_frontalface/haarcascade_frontalface_default.xml"
 
 
 # 顔検出関数
