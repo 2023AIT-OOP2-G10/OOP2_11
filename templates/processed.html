@@ -1,8 +1,23 @@
-<!doctype html>
-<title>Processed Images</title>
-<h1>Processed Images</h1>
-<ul>
-  {% for file in processed_files %}
-    <li><a href="{{ url_for('static', filename='processed/' + file) }}" target="_blank">{{ file }}</a></li>
-  {% endfor %}
-</ul>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Processed Images</title>
+</head>
+<body>
+    <h1>Processed Images</h1>
+
+    {% if processed_files %}
+        <ul>
+            {% for file in processed_files %}
+                <li><img src="{{ url_for('static', filename='processed/' + file) }}" alt="{{ file }}"></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No processed images available.</p>
+    {% endif %}
+
+    <p><a href="{{ url_for('upload_file') }}">Back to Upload</a></p>
+</body>
+</html>
