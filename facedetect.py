@@ -2,11 +2,11 @@ import cv2
 import os
 
 # Haar Cascadeファイルのパス
-CASCADE_PATH = "haarcascade_frontalface/haarcascade_frontalface_default.xml"
+CASCADE_PATH = "haarcascade_frontalface_default.xml"
 
 
-# 顔検出関数
-def detect_faces(image_path, output_path):
+# 顔検出
+def face_detect_process_image(image_path, output_path):
     face_cascade = cv2.CascadeClassifier(CASCADE_PATH)
 
     image = cv2.imread(image_path)
@@ -18,7 +18,7 @@ def detect_faces(image_path, output_path):
 
     cv2.imwrite(output_path, image)
 
-
+# face_detect_process_image
 def process_image(file_path, processed_folder):
     processed_path = os.path.join(processed_folder, os.path.basename(file_path))
-    detect_faces(file_path, processed_path)
+    face_detect_process_image(file_path, processed_path)
