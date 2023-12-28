@@ -1,6 +1,8 @@
 import cv2
 
-img = cv2.imread('messi5.jpg',0)
-edges = cv2.Canny(img,100,200)
 
-cv2.imwrite('data/dst/opencv_canny.jpg', edges)
+def canny_process_image(image_path, output_path):
+    img = cv2.imread(image_path, 0)
+    edges = cv2.Canny(img, 100, 200)
+
+    cv2.imwrite(output_path, edges)
