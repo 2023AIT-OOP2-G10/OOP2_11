@@ -5,10 +5,10 @@ from multiprocessing import Process
 import time
 import cv2
 
-from OOP2_11.facedetect import face_detect_process_image
-from OOP2_11.face_mosaic_app import process_image
-from OOP2_11.grayscale import gray_process_image
-from OOP2_11.canny import canny_process_image
+from facedetect import face_detect_process_image
+from face_mosaic_app import process_image
+from grayscale import gray_process_image
+from canny import canny_process_image
 
 app = Flask(__name__)
 
